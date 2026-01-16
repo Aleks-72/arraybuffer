@@ -53,7 +53,7 @@ describe('Create Magician', () => {
         expect(hero.getAttack()).toBe(8)
     });
 
-    it('Get attack without stoned', () => {
+    it('Get attack with stoned', () => {
         hero.setStoned(true)
         hero.setAttack(3)
         expect(hero.getAttack()).toBe(7.21)

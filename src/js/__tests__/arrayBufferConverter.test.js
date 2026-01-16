@@ -14,13 +14,14 @@ function getBuffer() {
   })(data);
 }
 
-test.each([['Error testing','Буфер не загружен'],
-    ['Data testing','{"data":{"user":{"id":1,"name":"Hitman","level":10}}}']
-    ])(('Use setting parameters'), (test_name, expected) => {
-        if (test_name==='Error testing') {
-            expect(() => arrayBuffer.toString()).toThrow(new Error(expected))
-        } else if (test_name==='Data testing') {
-            arrayBuffer.load(getBuffer())
-            expect(arrayBuffer.toString()).toBe(expected)
-        }
-    })
+describe('ArrayBuffer', () => {
+    it('Error testing', () => {
+        expect(() => arrayBuffer.toString()).toThrow(new Error('Буфер не загружен'))
+    });
+
+    it('Data testing', () => {
+        arrayBuffer.load(getBuffer())
+        expect(arrayBuffer.toString()).toBe('{"data":{"user":{"id":1,"name":"Hitman","level":10}}}')
+    });
+    }
+)
