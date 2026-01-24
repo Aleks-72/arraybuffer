@@ -17,10 +17,6 @@ describe('Create Swordsman', () => {
         expect(() => new Swordsman('MikeSwordsman')).toThrow(new Error('Имя должно быть не менее 2 и не более 10 символов'))
     });
 
-    it('Uncorrect type', () => {
-        expect(() => new Swordsman('Mike', 'Magic')).toThrow(new Error('Тип должен быть один из следующих: Bowman, Swordsman, Magician, Daemon, Undead, Zombie'))
-    });
-
     let hero;
 
     beforeEach(() => {

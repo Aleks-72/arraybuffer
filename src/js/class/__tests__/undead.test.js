@@ -16,11 +16,6 @@ describe('Create Bowerman', () => {
     it('Long name', () => {
         expect(() => new Undead('MikeBowerman')).toThrow(new Error('Имя должно быть не менее 2 и не более 10 символов'))
     });
-
-    it('Uncorrect type', () => {
-        expect(() => new Undead('Mike', 'Magic')).toThrow(new Error('Тип должен быть один из следующих: Bowman, Swordsman, Magician, Daemon, Undead, Zombie'))
-    });
-
     
     let hero;
 
