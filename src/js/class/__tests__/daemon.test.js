@@ -1,8 +1,8 @@
 import Daemon from "../daemon";
 
-describe('Create Swordsman', () => {
+describe('Create Daemon', () => {
     it('Correct create', () => {
-        expect(new Daemon('Mike')).toEqual({name: 'Mike', type: 'Daemon', health: 100, level: 1, attack: 10, defence: 40})
+        expect(new Daemon('Mike')).toEqual({name: 'Mike', type: 'Daemon', health: 100, level: 1, _attack: 10, defence: 40})
     });
     
     it('Small name', () => {
@@ -25,7 +25,7 @@ describe('Create Swordsman', () => {
 
     it('Level up', () => {
         hero.levelUp()
-        expect(hero).toEqual({name: 'Mike', type: 'Daemon', health: 100, level: 2, attack: 12, defence: 48})
+        expect(hero).toEqual({name: 'Mike', type: 'Daemon', health: 100, level: 2, _attack: 12, defence: 48})
     });
 
     it('Level up error', () => {
@@ -45,21 +45,21 @@ describe('Create Swordsman', () => {
     });
     
     it('Get attack without stoned', () => {
-        hero.setAttack(3)
-        expect(hero.getAttack()).toBe(8)
+        hero.attack=3
+        expect(hero.attack).toBe(8)
     });
 
     it('Get attack with stoned', () => {
-        hero.setStoned(true)
-        hero.setAttack(3)
-        expect(hero.getAttack()).toBe(7.21)
+        hero.stoned = true
+        hero.attack = 3
+        expect(hero.attack).toBe(7.21)
     });
     
     it('Set stoned with Error', () => {
-        expect(() => hero.setStoned(1)).toThrow(new Error('Передано некорректное значение: необходимо передать True или False'))
+        expect(() => hero.stoned = 1).toThrow(new Error('Передано некорректное значение: необходимо передать True или False'))
     });
 
     it('Get  stoned', () => {
-        expect(hero.getStoned()).toBe(false)
+        expect(hero.stoned).toBe(false)
     });
 })

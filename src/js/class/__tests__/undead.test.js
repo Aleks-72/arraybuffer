@@ -2,7 +2,7 @@ import Undead from "../undead";
 
 describe('Create Bowerman', () => {
     it('Correct create', () => {
-        expect(new Undead('Mike')).toEqual({name: 'Mike', type: 'Undead', health: 100, level: 1, attack: 25, defence: 25})
+        expect(new Undead('Mike')).toEqual({name: 'Mike', type: 'Undead', health: 100, level: 1, _attack: 25, defence: 25})
     });
     
     it('Small name', () => {
@@ -25,7 +25,7 @@ describe('Create Bowerman', () => {
 
     it('Level up', () => {
         hero.levelUp()
-        expect(hero).toEqual({name: 'Mike', type: 'Undead', health: 100, level: 2, attack: 30, defence: 30})
+        expect(hero).toEqual({name: 'Mike', type: 'Undead', health: 100, level: 2, _attack: 30, defence: 30})
     });
 
     it('Level up error', () => {
@@ -42,24 +42,5 @@ describe('Create Bowerman', () => {
         hero.health=5
         hero.damage(25)
         expect(hero.health).toBe(0)
-    });
-
-    it('Get attack without stoned', () => {
-        hero.setAttack(3)
-        expect(hero.getAttack()).toBe(25)
-    });
-
-    it('Get attack with stoned', () => {
-        hero.setStoned(true)
-        hero.setAttack(3)
-        expect(hero.getAttack()).toBe(25)
-    });
-    
-    it('Set stoned with Error', () => {
-        expect(() => hero.setStoned(1)).toThrow(new Error('Передано некорректное значение: необходимо передать True или False'))
-    });
-
-    it('Get  stoned', () => {
-        expect(hero.getStoned()).toBe(false)
     });
 })

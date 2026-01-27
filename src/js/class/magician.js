@@ -1,10 +1,12 @@
-import Character from "./character";
+import MathAttack from "./mathAttack";
 
-export default class Magician extends Character {
+export default class Magician extends MathAttack {
+    
+
     constructor(name) {
         super(name);
         this.type='Magician'
-        this.attack = 10;
+        this._attack = 10;
         this.defence = 40;
     }
 }

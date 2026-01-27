@@ -1,7 +1,4 @@
 export default class Character {
-    #activeAttack = this.attack
-    #stoned = false
-
     constructor(name) {
         if (typeof name !== 'string') {
             throw new Error('Имя должно быть строкой')
@@ -17,7 +14,7 @@ export default class Character {
     levelUp() {
         if (this.health>0) {
             this.level += 1
-            this.attack *= 1.2
+            this._attack *= 1.2
             this.defence *= 1.2
             this.health = 100
         } else {
@@ -31,29 +28,5 @@ export default class Character {
         } else {
             this.health = 0
         }
-    }
-
-    getStoned() {
-        return this.#stoned
-    }
-
-    setStoned(status) {
-        if (status === false || status === true) {
-            this.#stoned = status
-        } else {
-            throw new Error ('Передано некорректное значение: необходимо передать True или False')
-        }
-    }
-
-    setAttack(distance) {
-        if (this.type === 'Magician' || this.type === 'Daemon') {
-            this.#activeAttack = Number((this.attack * (1 - 0.1*(distance-1) - (this.#stoned ? Math.log2(distance)*5/100 : 0))).toFixed(2))
-        } else {
-            this.#activeAttack=this.attack
-        }
-    }
-
-    getAttack() {
-        return this.#activeAttack
     }
 }

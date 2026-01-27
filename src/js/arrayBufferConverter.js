@@ -10,14 +10,13 @@ export default class ArrayBufferConverter {
     toString() {
         if (this.buffer === null) {
             throw new Error('Буфер не загружен');
-        } else {
-            const view = new Uint16Array(this.buffer);
-            let result = '';
-            for (let i = 0; i < view.length; i++) {
-                result += String.fromCharCode(view[i])
-            }
-            return result;
         }
+        const view = new Uint16Array(this.buffer);
+        let result = '';
+        for (let i = 0; i < view.length; i++) {
+            result += String.fromCharCode(view[i])
+        }
+        return result;
         
     }
 }
